@@ -1,19 +1,37 @@
 import React, { Component } from "react";
 
-import subjects from "../Data/Subjects";
+import theSubjects from "../Data/Subjects";
 
 // Components
 import SubjectRow from "./SubjectRow";
 
 class SubjectList extends Component {
+  state = {
+    subjects: theSubjects
+  };
+
+  deleteSubject = deletedSubject => {
+    let newSubjects = this.state.subjects.filter(
+      subject => subject !== deletedSubject
+    );
+    this.setState({ subjects: newSubjects });
+  };
+
   render() {
-    let subjectList = subjects.map(subject => {
-      return <SubjectRow subject={subject} key={subject.name} />;
+    console.log(this.state.subjects);
+    let subjectList = this.state.subjects.map(subject => {
+      return (
+        <SubjectRow
+          subject={subject}
+          key={subject.subjectName}
+          deleteSubject={this.deleteSubject}
+        />
+      );
     });
 
     return (
       <div>
-        <table class="table">
+        <table className="table">
           <thead>
             <tr>
               <th scope="col">Subject</th>

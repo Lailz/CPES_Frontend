@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 class SubjectRow extends Component {
   render() {
@@ -9,8 +11,15 @@ class SubjectRow extends Component {
         <td>{subject.description}</td>
         <td>{subject.questions.length}</td>
         <td>
-          <i className="far fa-edit" />
-          <i className="far fa-trash-alt" />
+          <span>
+            <FontAwesomeIcon icon={faEdit} />
+          </span>
+          <span>
+            <FontAwesomeIcon
+              icon={faTrash}
+              onClick={() => this.props.deleteSubject(subject)}
+            />
+          </span>
           <button className="btn btn-warning">Start</button>
         </td>
       </tr>
