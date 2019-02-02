@@ -18,9 +18,12 @@ class SubjectRow extends Component {
         <td>{subject.description}</td>
         <td>{subject.questions.length}</td>
         <td>
-          <span className="mr-3">
-            <FontAwesomeIcon icon={faEdit} />
-          </span>
+
+          <Link to={`/editSubject/${subject.subjectName}`}>
+            <span>
+              <FontAwesomeIcon icon={faEdit} />
+            </span>
+          </Link>
           <span>
             <FontAwesomeIcon
               icon={faTrash}

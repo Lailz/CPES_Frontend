@@ -11,11 +11,14 @@ class SubjectDetail extends Component {
     store.fetchQuestionSetBySubject(this.props.match.params.subjectName);
   }
   render() {
+    if (!store.subject && !store.questionSet) {
+      return <h1>Loading...</h1>;
+    }
     return (
       <div>
         <h2>{store.subject.subjectName}</h2>
         <p>{store.subject.description}</p>
-        <QuestionList questions={store.questionSet} />
+        <QuestionList questionSet={store.questionSet} />
       </div>
     );
   }

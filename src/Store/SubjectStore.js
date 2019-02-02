@@ -28,7 +28,7 @@ class SubjectStore {
   }
 
   deleteQuestion(deletedQuestion) {
-    this.questions = this.questions.filter(
+    this.questionSet = this.questionSet.questions.filter(
       question => question !== deletedQuestion
     );
   }

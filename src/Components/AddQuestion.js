@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import subjects from "../Data/Subjects";
 import questions from "../Data/Questions";
-import { Redirect } from "react-router-dom";
+
+import store from "../Store/SubjectStore";
 
 class AddQuestion extends Component {
   state = {
@@ -19,21 +20,14 @@ class AddQuestion extends Component {
   handleSubmit = event => {
     event.preventDefault();
     let subjectName = this.props.match.params.subjectName;
-    console.log("From match params", subjectName);
-    console.log(questions);
-    let subjectObject = questions.find(
-      question => question.subject === subjectName
-    );
-    console.log("Subject found: ", subjectObject);
+    store.fetchQuestionSetBySubject(subjectName);
     let question = this.state;
     question = {
       question: question.question,
       correctAnswer: question.correctAnswer,
       wrongAnswers: [question.answer1, question.answer2, question.answer3]
     };
-    console.log("question", question);
-    subjectObject.questions.push(this.state);
-    console.log("subject object", subjectObject);
+    store.questionSet.push(question);
     this.props.history.push("/");
   };
 
@@ -93,7 +87,7 @@ class AddQuestion extends Component {
               />
             </div>
           </div>
-          <button type="submit" class="btn btn-warning">
+          <button type="submit" className="btn btn-warning">
             Add Question
           </button>
         </form>
