@@ -1,32 +1,24 @@
 import React, { Component } from "react";
 
 import QuestionList from "./QuestionList";
+import { observer } from "mobx-react";
 
-import allSubjects from "../Data/Subjects";
-import allQuestions from "../Data/Questions";
+import store from "../Store/SubjectStore";
 
 class SubjectDetail extends Component {
-  state = {
-    subjects: allSubjects,
-    questions: allQuestions
-  };
-
+  componentDidMount() {
+    store.fetchSubjectByName(this.props.match.params.subjectName);
+    store.fetchQuestionSetBySubject(this.props.match.params.subjectName);
+  }
   render() {
-    const subjectName = this.props.match.params.subjectName;
-    let subject = this.state.subjects.find(subject => {
-      return subject.subjectName === subjectName;
-    });
-    let questions = this.state.questions.find(subjectQuestions => {
-      return subjectQuestions.subject === subjectName;
-    });
     return (
       <div>
-        <h2>{subject.subjectName}</h2>
-        <p>{subject.description}</p>
-        <QuestionList questions={questions} />
+        <h2>{store.subject.subjectName}</h2>
+        <p>{store.subject.description}</p>
+        <QuestionList questions={store.questionSet} />
       </div>
     );
   }
 }
 
-export default SubjectDetail;
+export default observer(SubjectDetail);

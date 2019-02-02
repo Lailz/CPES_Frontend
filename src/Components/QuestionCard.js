@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import store from "../Store/SubjectStore";
+import { observer } from "mobx-react";
 
 class QuestionCard extends Component {
   render() {
@@ -19,7 +21,7 @@ class QuestionCard extends Component {
               {question.question}
             </button>
           </h5>
-          <span onClick={() => this.props.deleteQuestion(question)}>
+          <span onClick={() => store.deleteQuestion(question)}>
             Delete Question
           </span>
         </div>
@@ -44,4 +46,4 @@ class QuestionCard extends Component {
   }
 }
 
-export default QuestionCard;
+export default observer(QuestionCard);

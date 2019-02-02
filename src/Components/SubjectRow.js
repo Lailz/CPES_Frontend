@@ -3,6 +3,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
+import store from "../Store/SubjectStore";
+
 class SubjectRow extends Component {
   render() {
     let { subject } = this.props;
@@ -22,7 +24,7 @@ class SubjectRow extends Component {
           <span>
             <FontAwesomeIcon
               icon={faTrash}
-              onClick={() => this.props.deleteSubject(subject)}
+              onClick={() => store.deleteSubject(subject)}
             />
           </span>
           <Link to={`/exam/${subject.subjectName}`}>

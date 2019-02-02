@@ -1,37 +1,15 @@
 import React, { Component } from "react";
-
-import theSubjects from "../Data/Subjects";
+import { observer } from "mobx-react";
 
 // Components
 import SubjectRow from "./SubjectRow";
 
+import store from "../Store/SubjectStore";
+
 class SubjectList extends Component {
-  state = {
-    subjects: theSubjects
-  };
-
-  // updateSubject(selectedSubject) {
-  //   let subject = this.state.subjects.find(subject => {
-  //     return subject.subjectName === selectedSubject.subjectName;
-  //   });
-  // }
-
-  deleteSubject = deletedSubject => {
-    let newSubjects = this.state.subjects.filter(
-      subject => subject !== deletedSubject
-    );
-    this.setState({ subjects: newSubjects });
-  };
-
   render() {
-    let subjectList = this.state.subjects.map(subject => {
-      return (
-        <SubjectRow
-          subject={subject}
-          key={subject.subjectName}
-          deleteSubject={this.deleteSubject}
-        />
-      );
+    let subjectList = store.subjects.map(subject => {
+      return <SubjectRow subject={subject} key={subject.subjectName} />;
     });
 
     return (
@@ -52,4 +30,4 @@ class SubjectList extends Component {
   }
 }
 
-export default SubjectList;
+export default observer(SubjectList);
