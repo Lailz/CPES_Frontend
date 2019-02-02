@@ -60,7 +60,7 @@ class EditSubject extends Component {
             class="btn btn-warning"
             onClick={this.handleSubmit}
           >
-            Add Subject
+            Edit Subject
           </button>
           <button class="btn btn-warning" onClick={this.handleSubmitTwo}>
             Add Questions

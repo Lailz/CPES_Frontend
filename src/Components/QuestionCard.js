@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class QuestionCard extends Component {
   render() {
     let { index, question } = this.props;
+    let wrongAnswers = question.wrongAnswers.map(answer => <td>{answer}</td>);
     return (
       <div className="card">
         <div className="card-header" id={index}>
@@ -29,7 +30,14 @@ class QuestionCard extends Component {
           aria-labelledby={index}
           data-parent="#accordionExample"
         >
-          <div className="card-body">{question.correctAnswer}</div>
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td>{question.correctAnswer}</td>
+                {wrongAnswers}
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     );
