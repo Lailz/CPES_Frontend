@@ -1,37 +1,45 @@
 import React, { Component } from "react";
-import QuestionChoice from "./QuestionChoice";
+import { observer } from "mobx-react";
+import store from "../Store/SubjectStore";
 
 class Question extends Component {
   state = {
     selectedOption: "option1"
   };
 
-  handleOptionChange = changeEvent => {
+  handleOptionChange = event => {
     this.setState({
-      selectedOption: changeEvent.target.value
+      selectedOption: event.target.value
     });
+    if (event.target.value === this.props.question.correctAnswer) {
+      store.answers[this.props.index] = true;
+    } else {
+      store.answers[this.props.index] = false;
+    }
   };
 
   render() {
     console.log("Question", this.props.question);
     let { question } = this.props;
-    let answers = [...question.correctAnswer, question.wrongAnswers];
+    let answers = [question.correctAnswer, ...question.wrongAnswers];
+    console.log("Answers", answers);
     return (
       <div className="container">
         <div className="row mt-5">
           <div className="col-sm-12">
+            <h5>{question.question}</h5>
             <form>
               <div className="form-check">
                 <label>
                   <input
                     type="radio"
                     name="react-tips"
-                    value="option1"
-                    checked={this.state.selectedOption === "option1"}
+                    value={answers[0]}
+                    checked={this.state.selectedOption === answers[0]}
                     onChange={this.handleOptionChange}
                     className="form-check-input"
                   />
-                  Option 1
+                  {answers[0]}
                 </label>
               </div>
               <div className="form-check">
@@ -39,12 +47,12 @@ class Question extends Component {
                   <input
                     type="radio"
                     name="react-tips"
-                    value="option2"
-                    checked={this.state.selectedOption === "option2"}
+                    value={answers[1]}
+                    checked={this.state.selectedOption === answers[1]}
                     onChange={this.handleOptionChange}
                     className="form-check-input"
                   />
-                  Option 2
+                  {answers[1]}
                 </label>
               </div>
               <div className="form-check">
@@ -52,18 +60,26 @@ class Question extends Component {
                   <input
                     type="radio"
                     name="react-tips"
-                    value="option3"
-                    checked={this.state.selectedOption === "option3"}
+                    value={answers[2]}
+                    checked={this.state.selectedOption === answers[2]}
                     onChange={this.handleOptionChange}
                     className="form-check-input"
                   />
-                  Option 3
+                  {answers[2]}
                 </label>
               </div>
-              <div className="form-group">
-                <button className="btn btn-primary mt-2" type="submit">
-                  Save
-                </button>
+              <div className="form-check">
+                <label>
+                  <input
+                    type="radio"
+                    name="react-tips"
+                    value={answers[3]}
+                    checked={this.state.selectedOption === answers[3]}
+                    onChange={this.handleOptionChange}
+                    className="form-check-input"
+                  />
+                  {answers[3]}
+                </label>
               </div>
             </form>
           </div>
@@ -73,4 +89,4 @@ class Question extends Component {
   }
 }
 
-export default Question;
+export default observer(Question);
