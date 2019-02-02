@@ -13,6 +13,21 @@ let questions = [
         wrongAnswers: ["げんき", "がっこう", "がくせい"]
       }
     ]
+  },
+  {
+    subject: "Turkish",
+    questions: [
+      {
+        question: "What does Gunaydin mean?",
+        correctAnswer: "good morning",
+        wrongAnswers: ["hello", "bye", "food"]
+      },
+      {
+        question: "How do we say love in Turkish?",
+        correctAnswer: "sev",
+        wrongAnswers: ["yeter", "gitme", "hayir"]
+      }
+    ]
   }
 ];
 

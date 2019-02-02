@@ -10,6 +10,12 @@ class SubjectList extends Component {
     subjects: theSubjects
   };
 
+  // updateSubject(selectedSubject) {
+  //   let subject = this.state.subjects.find(subject => {
+  //     return subject.subjectName === selectedSubject.subjectName;
+  //   });
+  // }
+
   deleteSubject = deletedSubject => {
     let newSubjects = this.state.subjects.filter(
       subject => subject !== deletedSubject
