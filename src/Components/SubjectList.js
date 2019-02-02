@@ -13,7 +13,7 @@ class SubjectList extends Component {
     });
 
     return (
-      <div>
+      <div className="p-5">
         <table className="table">
           <thead>
             <tr>
