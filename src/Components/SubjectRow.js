@@ -25,7 +25,9 @@ class SubjectRow extends Component {
               onClick={() => this.props.deleteSubject(subject)}
             />
           </span>
-          <button className="btn btn-warning">Start</button>
+          <Link to={`/exam/${subject.subjectName}`}>
+            <button className="btn btn-warning">Start</button>
+          </Link>
         </td>
       </tr>
     );
