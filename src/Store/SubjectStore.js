@@ -1,4 +1,4 @@
-import { decorate, observable } from "mobx";
+import { decorate, observable, computed } from "mobx";
 
 import allSubjects from "../Data/Subjects";
 import allQuestions from "../Data/Questions";
@@ -9,6 +9,7 @@ class SubjectStore {
     this.questions = allQuestions;
     this.subject = null;
     this.questionSet = null;
+    this.answers = [];
   }
 
   fetchSubjectByName(name) {
@@ -32,13 +33,25 @@ class SubjectStore {
       question => question !== deletedQuestion
     );
   }
+
+  get calculatedGrade() {
+    let grade = 0;
+    this.answers.forEach(answer => {
+      if (answer) {
+        grade++;
+      }
+    });
+    return grade;
+  }
 }
 
 decorate(SubjectStore, {
   subjects: observable,
   subject: observable,
   questions: observable,
-  questionSet: observable
+  questionSet: observable,
+  answers: observable,
+  calculatedGrade: computed
 });
 
 export default new SubjectStore();
