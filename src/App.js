@@ -16,11 +16,11 @@ class App extends Component {
       <div>
         <Navbar />
         <Switch>
-          <Route to="/" exact component={Home} />
-          <Route to="/subjects" component={SubjectList} />
-          <Route to="/:subjectName/questions" component={QuestionList} />
-          <Route to="/addQuestion" component={AddQuestion} />
-          <Route to="/addSubject" component={AddSubject} />
+          <Route path="/" exact component={Home} />
+          <Route path="/subjects" component={SubjectList} />
+          <Route path="/:subjectName/questions" component={QuestionList} />
+          <Route path="/addQuestion/:subjectName" component={AddQuestion} />
+          <Route path="/addSubject" component={AddSubject} />
         </Switch>
       </div>
     );

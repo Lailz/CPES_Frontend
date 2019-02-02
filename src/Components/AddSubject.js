@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import subjects from "../Data/Subjects";
+import { Redirect } from "react-router-dom";
 
 class AddSubject extends Component {
   state = {
-    subject: "Subject",
+    subjectName: "",
     description: "",
     questions: []
   };
@@ -15,21 +16,22 @@ class AddSubject extends Component {
   handleSubmit = event => {
     event.preventDefault();
     subjects.push(this.state);
+    this.props.history.push("/");
   };
 
   render() {
     return (
-      <div>
-        <form>
+      <div className="container">
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group row">
             <label className="col-sm-2 col-form-label">Subject</label>
             <div className="col-sm-10">
               <input
                 type="text"
                 className="form-control"
-                name="description"
+                name="subjectName"
                 placeholder="Subject"
-                value={this.state.subject}
+                value={this.state.subjectName}
                 onChange={this.handleChange}
               />
             </div>
@@ -47,6 +49,10 @@ class AddSubject extends Component {
               />
             </div>
           </div>
+          <button type="submit" class="btn btn-warning">
+            Add Subject
+          </button>
+          <button class="btn btn-warning">Add Questions</button>
         </form>
       </div>
     );

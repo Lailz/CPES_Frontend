@@ -8,7 +8,7 @@ import SubjectRow from "./SubjectRow";
 class SubjectList extends Component {
   render() {
     let subjectList = subjects.map(subject => {
-      return <SubjectRow subject={subject} />;
+      return <SubjectRow subject={subject} key={subject.name} />;
     });
 
     return (
