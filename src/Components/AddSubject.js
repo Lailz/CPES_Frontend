@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import subjects from "../Data/Subjects";
 import { Redirect } from "react-router-dom";
+
+import store from "../Store/SubjectStore";
 
 class AddSubject extends Component {
   state = {
@@ -15,14 +16,14 @@ class AddSubject extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    subjects.push(this.state);
-    return <Redirect to={`/subjects/${this.state.subjectName}`} />;
+    store.subjects.push(this.state);
+    this.props.history.push(`/subjects/${this.state.subjectName}`);
   };
 
   handleSubmitTwo = event => {
     event.preventDefault();
-    subjects.push(this.state);
-    return <Redirect to={`/addQuestion/${this.state.subjectName}`} />;
+    store.subjects.push(this.state);
+    this.props.history.push(`/addQuestion/${this.state.subjectName}`);
   };
 
   render() {

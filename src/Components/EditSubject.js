@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import subjects from "../Data/Subjects";
 import { Redirect } from "react-router-dom";
+import { observer } from "mobx-react";
+
+import store from "../Store/SubjectStore";
 
 class EditSubject extends Component {
+  componentDidMount() {
+    store.fetchSubjectByName(this.props.match.params.subjectName);
+    this.setState({
+      subjectName: store.subject.subjectName,
+      description: store.subject.description
+    });
+  }
   state = {
     subjectName: "",
-    description: "",
-    questions: []
+    description: ""
   };
 
   handleChange = event => {
@@ -15,14 +24,15 @@ class EditSubject extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    subjects.push(this.state);
-    return <Redirect to={`/subjects/${this.state.subjectName}`} />;
+    store.subject.subjectName = this.state.subjectName;
+    store.subject.description = this.state.description;
+    this.props.history.push(`/subjects/${this.state.subjectName}`);
   };
 
   handleSubmitTwo = event => {
     event.preventDefault();
     subjects.push(this.state);
-    return <Redirect to={`/addQuestion/${this.state.subjectName}`} />;
+    this.props.history.push(`/addQuestion/${this.state.subjectName}`);
   };
 
   render() {
@@ -71,4 +81,4 @@ class EditSubject extends Component {
   }
 }
 
-export default EditSubject;
+export default observer(EditSubject);

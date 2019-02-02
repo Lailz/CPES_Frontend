@@ -8,6 +8,7 @@ import Home from "./Components/Home";
 import QuestionList from "./Components/QuestionList";
 import SubjectList from "./Components/SubjectList";
 import AddSubject from "./Components/AddSubject";
+import EditSubject from "./Components/EditSubject";
 import AddQuestion from "./Components/AddQuestion";
 import SubjectDetail from "./Components/SubjectDetail";
 import ExamPage from "./Components/ExamPage";
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path="/subjects" component={SubjectList} />
           <Route path="/addQuestion/:subjectName" component={AddQuestion} />
           <Route path="/addSubject" component={AddSubject} />
+          <Route path="/editSubject/:subjectName" component={EditSubject} />
           <Route path="/exam/:subjectName" component={ExamPage} />
         </Switch>
       </div>
