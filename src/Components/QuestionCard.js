@@ -18,6 +18,9 @@ class QuestionCard extends Component {
               {question.question}
             </button>
           </h5>
+          <span onClick={() => this.props.deleteQuestion(question)}>
+            Delete Question
+          </span>
         </div>
 
         <div

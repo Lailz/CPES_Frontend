@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 class SubjectRow extends Component {
   render() {
     let { subject } = this.props;
     return (
       <tr>
-        <td>{subject.subjectName}</td>
+        <td>
+          <Link to={`/subjects/${subject.subjectName}`}>
+            {subject.subjectName}
+          </Link>
+        </td>
         <td>{subject.description}</td>
         <td>{subject.questions.length}</td>
         <td>

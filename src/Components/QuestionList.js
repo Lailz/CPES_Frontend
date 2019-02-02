@@ -11,11 +11,11 @@ class QuestionList extends Component {
       question => question !== deletedQuestion
     );
     this.setState({ questions: newQuestions });
+    console.log(this.state.questions);
   };
   render() {
-    let subjectName = this.props.match.params.subjectName;
-    let subject = questions.find(question => question.subject === subjectName);
-    let questionList = subject.questions.map((question, idx) => {
+    let { questions } = this.props;
+    let questionList = questions.questions.map((question, idx) => {
       return (
         <QuestionCard
           question={question}

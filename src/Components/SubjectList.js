@@ -18,7 +18,6 @@ class SubjectList extends Component {
   };
 
   render() {
-    console.log(this.state.subjects);
     let subjectList = this.state.subjects.map(subject => {
       return (
         <SubjectRow

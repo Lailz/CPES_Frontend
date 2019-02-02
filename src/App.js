@@ -9,6 +9,7 @@ import QuestionList from "./Components/QuestionList";
 import SubjectList from "./Components/SubjectList";
 import AddSubject from "./Components/AddSubject";
 import AddQuestion from "./Components/AddQuestion";
+import SubjectDetail from "./Components/SubjectDetail";
 
 class App extends Component {
   render() {
@@ -17,8 +18,8 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route path="/" exact component={Home} />
+          <Route path="/subjects/:subjectName" component={SubjectDetail} />
           <Route path="/subjects" component={SubjectList} />
-          <Route path="/questions/:subjectName" component={QuestionList} />
           <Route path="/addQuestion/:subjectName" component={AddQuestion} />
           <Route path="/addSubject" component={AddSubject} />
         </Switch>

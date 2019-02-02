@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import subjects from "../Data/Subjects";
 import { Redirect } from "react-router-dom";
 
-class AddSubject extends Component {
+class EditSubject extends Component {
   state = {
     subjectName: "",
     description: "",
@@ -71,4 +71,4 @@ class AddSubject extends Component {
   }
 }
 
-export default AddSubject;
+export default EditSubject;
