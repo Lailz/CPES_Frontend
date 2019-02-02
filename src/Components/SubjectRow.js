@@ -9,7 +9,7 @@ class SubjectRow extends Component {
   render() {
     let { subject } = this.props;
     return (
-      <tr>
+      <tr className="">
         <td>
           <Link to={`/subjects/${subject.subjectName}`}>
             {subject.subjectName}
@@ -18,7 +18,7 @@ class SubjectRow extends Component {
         <td>{subject.description}</td>
         <td>{subject.questions.length}</td>
         <td>
-          <span>
+          <span className="mr-3">
             <FontAwesomeIcon icon={faEdit} />
           </span>
           <span>
@@ -28,7 +28,7 @@ class SubjectRow extends Component {
             />
           </span>
           <Link to={`/exam/${subject.subjectName}`}>
-            <button className="btn btn-warning">Start</button>
+            <button className="btn btn-warning ml-3">Start</button>
           </Link>
         </td>
       </tr>

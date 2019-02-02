@@ -27,45 +27,54 @@ class AddSubject extends Component {
 
   render() {
     return (
-      <div className="container">
-        <form>
-          <div className="form-group row">
-            <label className="col-sm-2 col-form-label">Subject</label>
-            <div className="col-sm-10">
-              <input
-                type="text"
-                className="form-control"
-                name="subjectName"
-                placeholder="Subject"
-                value={this.state.subjectName}
-                onChange={this.handleChange}
-              />
+      <div className="container my-5">
+        <section className="card container-fluid mt-1 p-5 pt-0 bg-dark text-white">
+          <h1 className="mt-3 p-3">Add Subject</h1>
+
+          <form className="p-3">
+            <div className="form-group row">
+              <label className="col-sm-2 col-form-label">Subject</label>
+              <div className="col-sm-10">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="subjectName"
+                  placeholder="Subject"
+                  value={this.state.subjectName}
+                  onChange={this.handleChange}
+                />
+              </div>
             </div>
-          </div>
-          <div className="form-group row">
-            <label className="col-sm-2 col-form-label">Description</label>
-            <div className="col-sm-10">
-              <input
-                type="text"
-                className="form-control"
-                name="description"
-                placeholder="Description"
-                value={this.state.description}
-                onChange={this.handleChange}
-              />
+            <div className="form-group row">
+              <label className="col-sm-2 col-form-label">Description</label>
+              <div className="col-sm-10">
+                <input
+                  type="text"
+                  className="form-control"
+                  name="description"
+                  placeholder="Description"
+                  value={this.state.description}
+                  onChange={this.handleChange}
+                />
+              </div>
             </div>
-          </div>
-          <button
-            type="submit"
-            class="btn btn-warning"
-            onClick={this.handleSubmit}
-          >
-            Add Subject
-          </button>
-          <button class="btn btn-warning" onClick={this.handleSubmitTwo}>
-            Add Questions
-          </button>
-        </form>
+            <div className="float-right">
+              <button
+                type="submit"
+                className="btn btn-warning mr-3"
+                onClick={this.handleSubmit}
+              >
+                Add Subject
+              </button>
+              <button
+                className="btn btn-warning"
+                onClick={this.handleSubmitTwo}
+              >
+                Add Questions
+              </button>
+            </div>
+          </form>
+        </section>
       </div>
     );
   }
