@@ -73,21 +73,21 @@ class AddQuestion extends Component {
               <input
                 type="text"
                 className="form-control"
-                name="falseAnswers.answer1"
+                name="answer1"
                 placeholder="False Answer 1"
                 onChange={this.handleChange}
               />
               <input
                 type="text"
                 className="form-control"
-                name="falseAnswers.answer2"
+                name="answer2"
                 placeholder="False Answer 2"
                 onChange={this.handleChange}
               />
               <input
                 type="text"
                 className="form-control"
-                name="falseAnswers.answer3"
+                name="answer3"
                 placeholder="False Answer 3"
                 onChange={this.handleChange}
               />
